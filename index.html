@@ -1,1 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MPL Robotic Leg System</title>
 
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #00ffcc;
+      font-family: Arial;
+      text-align: center;
+    }
+
+    .panel {
+      border: 1px solid #00ffcc;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      background: #111;
+      color: #00ffcc;
+      border: 1px solid #00ffcc;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>MPL Robotic Leg Control Lab</h1>
+
+  <div class="panel">
+    <h2>Status</h2>
+    <p id="status">Offline</p>
+  </div>
+
+  <div class="panel">
+    <h2>Leg Controls</h2>
+
+    <button onclick="move('forward')">Forward</button>
+    <button onclick="move('backward')">Backward</button>
+    <button onclick="move('left')">Left</button>
+    <button onclick="move('right')">Right</button>
+    <button onclick="stop()">Stop</button>
+  </div>
+
+  <div class="panel">
+    <h2>Telemetry</h2>
+    <p>Joint Angle: <span id="angle">0</span></p>
+    <p>Load: <span id="load">0</span></p>
+  </div>
+
+<script>
+document.getElementById("status").innerText = "System Online";
+
+function move(dir) {
+  console.log("Moving:", dir);
+}
+
+function stop() {
+  console.log("Stopped");
+}
+
+// fake telemetry stream
+setInterval(() => {
+  document.getElementById("angle").innerText =
+    Math.floor(Math.random() * 180);
+
+  document.getElementById("load").innerText =
+    Math.floor(Math.random() * 100);
+
+}, 1000);
+</script>
+
+</body>
+</html>
