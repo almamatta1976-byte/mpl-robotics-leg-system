@@ -5,3 +5,17 @@ const ROBOT = {
 };
 
  
+function move(direction) {
+  fetch(ROBOT.backend + "/move", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      robot: ROBOT.name,
+      command: direction
+    })
+  });
+
+  console.log("MOVE SENT:", direction);
+}
